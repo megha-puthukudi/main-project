@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <input type="file" name="my_image">
+        <input type="submit">
+    </form>
+    
+    {% if img_path %}
+    <h2>Uploaded Image:</h2>
+    <img src="{{ img_path }}" alt="Uploaded Image">
+    {% endif %}
+    
+    {% if severity_prediction %}
+    <h2>Severity Prediction:</h2>
+    <p>{{ severity_prediction }}</p>
+    {% endif %}
+
+    {% if damage_prediction %}
+    <h2>Damage Prediction:</h2>
+    <p>{{ damage_prediction }}</p>
+    {% endif %}
+</body>
+</html>

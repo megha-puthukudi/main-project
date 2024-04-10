@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classifier</title>
+</head>
+<body>
+    <h1>Image Classifier</h1>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <input type="file" name="my_image">
+        <button type="submit">Upload</button>
+    </form>
+    {% if prediction %}
+    <p>Prediction: {{ prediction | safe }}</p>
+    {% endif %}
+    {% if img_path %}
+    <img src="{{ img_path }}" alt="Uploaded Image" width="300">
+    {% endif %}
+</body>
+</html>

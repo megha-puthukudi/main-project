@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+</head>
+<body>
+    <h1>Prediction Result</h1>
+    {% if car_damage %}
+    <h2>Car Damage: {{ car_damage }}</h2>
+    {% if car_damage == 'Damaged' %}
+    <h2>Damage Severity: {{ severity }}</h2>
+    <h2>Damage Spot: {{ spot }}</h2>
+    <img src="{{ file_path }}" alt="Uploaded Image" width="300">
+    {% else %}
+    <img src="{{ file_path }}" alt="Uploaded Image" width="300">
+    {% endif %}
+    {% endif %}
+</body>
+</html>

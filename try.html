@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Damage Classifier</title>
+<style>
+    /* Add your CSS styles here */
+</style>
+</head>
+<body>
+<h1>Car Damage Classifier</h1>
+<div>
+    <h2>Choose an Option</h2>
+    <button onclick="uploadImage()">Upload Image</button>
+    <button onclick="uploadVideo()">Upload Video</button>
+    <button onclick="realTimeAnalysis()">Real-Time Analysis</button>
+</div>
+<div id="fileUploadContainer" style="display: none;">
+    <h2>Upload Files</h2>
+    <input type="file" id="fileInput" accept="image/*, video/*">
+    <button onclick="uploadFile()">Upload</button>
+</div>
+<div id="realTimeContainer" style="display: none;">
+    <h2>Real-Time Analysis</h2>
+    <p>Real-time analysis interface goes here...</p>
+</div>
+<div id="result"></div>
+
+<script>
+function uploadImage() {
+    showUploadContainer();
+}
+
+function uploadVideo() {
+    showUploadContainer();
+}
+
+function realTimeAnalysis() {
+    hideAllContainers();
+    document.getElementById('realTimeContainer').style.display = 'block';
+}
+
+function showUploadContainer() {
+    hideAllContainers();
+    document.getElementById('fileUploadContainer').style.display = 'block';
+}
+
+function hideAllContainers() {
+    document.getElementById('fileUploadContainer').style.display = 'none';
+    document.getElementById('realTimeContainer').style.display = 'none';
+}
+
+function uploadFile() {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        // You need to implement the backend URL where the file will be sent for processing
+        const url = 'backend/upload'; 
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            displayResult(data); // Function to display result
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    } else {
+        alert('Please select a file.');
+    }
+}
+
+function displayResult(data) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = ''; // Clear previous result
+    
+    // Display result based on data received from backend
+    resultDiv.innerHTML = `<p>Prediction: ${data.prediction}</p>`;
+}
+</script>
+</body>
+</html>

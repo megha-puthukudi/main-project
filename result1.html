@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+</head>
+<body>
+    {% for frame, prediction in frames %}
+        <img src="data:image/jpeg;base64,{{ frame }}" alt="Frame">
+        <h2>Car Damage: {{ prediction.car_damage }}</h2>
+        {% if prediction.car_damage == 'Damaged' %}
+            <h3>Damage Severity: {{ prediction.damage_severity }}</h3>
+            <h3>Damage Spot: {{ prediction.damage_spot }}</h3>
+        {% endif %}
+        <hr>
+    {% endfor %}
+</body>
+</html>

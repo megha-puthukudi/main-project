@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <h2>Damage Status: {{ damage_or_not }}</h2>
+    <h2>Damage Severity: {{ damage_severity }}</h2>
+    <h2>Damage Spot: {{ damage_spot }}</h2>
+    
+    <h3>Original Image</h3>
+    <img src="{{ img_path }}" alt="Original Image" width="400">
+    
+    <h3>Segmented Image</h3>
+    <img src="{{ segmented_img_path }}" alt="Segmented Image" width="400">
+</body>
+</html>
